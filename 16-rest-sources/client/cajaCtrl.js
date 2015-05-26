@@ -3,7 +3,7 @@
         var vm = this;
 
         vm.titulo = "Controla tu Cash Flow";
-		
+
 		// Al usar recursos, la sintaxis se asemaja de nuevo al modelo síncrono
 		// eso es posible porque AngularJS maneja internamente las promesas
 
@@ -12,19 +12,19 @@
 					vm.maestros = maestros;
 				});
 		//vm.maestros = maestrosFactory.get();
-		
+
 			vm.nuevoMovimiento = {
 				esIngreso: 1,
 				esGasto: 0,
 				importe: 0,
 				fecha: new Date()
 			};
-	
+
 //		vm.nuevoMovimiento = new movimientosFactory.movimientos();
 //		vm.nuevoMovimiento.esIngreso =1;
 //		vm.nuevoMovimiento.fecha = new Date();
-        
-        
+
+
 			movimientosFactory.gettingMovimientos()
 				.success(function (movimientos) {
 					vm.movimientos = movimientos;
@@ -32,7 +32,7 @@
 		// Si el recurso devuelve un array, tenemos usar el método query en lugar de get que es para un elemnto
 //		vm.movimientos = movimientosFactory.movimientos.query();
 
-        
+
 //        movimientosFactory.gettingTotal()
 //            .success(function (total) {
 //                vm.total = total;
@@ -65,7 +65,7 @@
 //                vm.nuevoMovimiento.importe = 0;
 //			});
 
-            
+
         }
         vm.balance = function () {
             return vm.total.ingresos - vm.total.gastos

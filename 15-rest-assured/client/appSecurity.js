@@ -14,7 +14,7 @@
     function funcionInterceptoraSeguridad($injector,$q, $cookieStore, $rootScope) {
         // la función interceptora devuelve un objeto que configura el interceptor
         var interceptor = {}; // Este objeto almacena funciones a llamar en ciertos momentos
-        
+
 		// Función que se ejecutarán antes de cada petición
         interceptor.request = function (request) {
             // Enviar en la cabecera el token de sesión previamente guardado en una cookie
@@ -38,8 +38,8 @@
             };
             return $q.reject(response);
         }
-        
-		
+
+
 		return interceptor;
     }
 

@@ -35,7 +35,7 @@ app.use('/api/priv/', function (req, res, next) {
 
 
 
-// API - REST 
+// API - REST
 // SECURITY
 app.route('/api/usuarios')
     .get(function (req, res, next) {
@@ -58,7 +58,7 @@ app.route('/api/usuarios')
 app.route('/api/sesiones')
     .get(function (req, res, next) {
         // Esto devuelve la lista completa de sesiones
-        // PELIGRO: Usar sólo a modo de debug mientras desarrollamos    
+        // PELIGRO: Usar sólo a modo de debug mientras desarrollamos
         res.json(sesiones);
     })
     .post(function (req, res, next) {

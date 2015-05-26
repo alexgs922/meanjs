@@ -13,22 +13,22 @@ angular.module('controlCajaApp').config(function ($stateProvider,$locationProvid
             templateUrl: 'nuevo.html'
         })
         .state('lista', {
-        	url: '/lista',    
+        	url: '/lista',
 			controller: 'CajaCtrl as caja',
             templateUrl: 'lista.html'
         })
 		.state('movimiento', {
-        	url: '/movimiento/:id', // declaracion de parametros en rutas    
+        	url: '/movimiento/:id', // declaracion de parametros en rutas
 			controller: 'MovimientoCtrl as vm',
             templateUrl: 'movimiento.html'
         })
         .state('registro', {
-        	url: '/registro',    
+        	url: '/registro',
 			controller: 'RegistroCtrl as registro',
             templateUrl: 'registro.html'
         })
         .state('not-found', {
-        	url: '*path',    
+        	url: '*path',
             controller: 'CajaCtrl as caja',
             templateUrl: 'total.html'
         });

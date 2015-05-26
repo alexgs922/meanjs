@@ -13,11 +13,11 @@ angular.module('controlCajaApp').config(function ($stateProvider,$locationProvid
             templateUrl: 'nuevo.html'
         })
         .state('lista', {
-        	url: '/lista',    
+        	url: '/lista',
 			controller: 'CajaCtrl as caja',
             templateUrl: 'lista.html'
         }).state('not-found', {
-        	url: '*path',    
+        	url: '*path',
             controller: 'CajaCtrl as caja',
             templateUrl: 'total.html'
         });

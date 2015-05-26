@@ -16,7 +16,7 @@ var total = {
     gastos: 0
 }
 
-// API - REST 
+// API - REST
 // verbos en protocolo, nombres de recurso en la ruta, parametros en segmentos o body
 
 // ruta en el API que devolverá la lista de maestros

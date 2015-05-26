@@ -12,7 +12,7 @@
     // Usar Transclude para reutilizar el contenido del usuario y hacer la vista más dinámica
     function cabecera() {
         return {
-            restrict: 'AE',
+            restrict: 'EA',
             replace: 'true',
             transclude: true,
             templateUrl: '/tpl-cabecera.html'

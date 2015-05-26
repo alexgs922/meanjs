@@ -31,7 +31,7 @@ app.use('/api/priv/', function (req, res, next) {
             // Para que el resto de la pila sepa quien es el usuario actual
             req.usuario = sesion.email;
         } else {
-            // La sesión ya está caducada 
+            // La sesión ya está caducada
             console.log('Sesión caducada:' + JSON.stringify(sesion));
             res.send(419, 'Sesión caducada');
         }
@@ -49,7 +49,7 @@ app.use('/api/priv/', function (req, res, next) {
 
 
 
-// API - REST 
+// API - REST
 // SECURITY
 // Gestión de usuarios: Lista y registro
 app.route('/api/usuarios')
@@ -76,11 +76,11 @@ app.route('/api/usuarios')
 app.route('/api/sesiones')
     .get(function (req, res, next) {
         // Esto devuelve la lista completa de sesiones
-        // PELIGRO: Usar sólo a modo de debug mientras desarrollamos    
+        // PELIGRO: Usar sólo a modo de debug mientras desarrollamos
         res.json(sesiones);
     })
     .post(function (req, res, next) {
-        // login    
+        // login
         var usuario = req.body;
         if (esUsuarioValido(usuario)) {
             console.log('aceptado:' + usuario.email);
@@ -147,7 +147,7 @@ app.route('/api/priv/movimientos')
     .post(function (req, res, next) {
         var movimiento = req.body;
         // Las funciones de negocio trabajan con la info de seguridad
-        // esto es posible gracias que los parametrs se pssan de unas funiones a otras    
+        // esto es posible gracias que los parametrs se pssan de unas funiones a otras
         movimiento.usuario = req.usuario;
         movimientos.push(movimiento);
         // Tambien tenemos que totalizar adecuadamente
