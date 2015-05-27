@@ -2,28 +2,10 @@
 var seguridadData = require('../data/seguridadData.js');
 
 module.exports.seguridad = function (app) {
-
-	app.use('/api/priv/', function (req, res, next) {
-		var sessionId = req.get('sessionId');
-		var sesion = seguridadData.getSesion(sessionId);
-		if (sesion) {
-			if (sesion.timeStamp) {
-				req.usuario = sesion.email;
-				next();
-			} else {
-				res.status(419).send('Sesión caducada');
-			}
-		} else {
-			res.status(401).send('Credencial inválida');
-		}
-	});
-
-	// API - REST
-	// SECURITY
 	app.route('/api/usuarios')
 		.post(function (req, res, next) {
 			var usuario = req.body;
-			seguridadData.posttingUsuario(usuario)
+			seguridadData.postingUsuario(usuario)
 				.then(function (sesion) {
 					if (sesion) {
 						res.json(sesion);
@@ -37,7 +19,7 @@ module.exports.seguridad = function (app) {
 	app.route('/api/sesiones')
 		.post(function (req, res, next) {
 			var usuario = req.body;
-			seguridadData.posttingSesion(usuario)
+			seguridadData.postingSesion(usuario)
 				.then(function (sesion) {
 					if (sesion) {
 						res.json(sesion);

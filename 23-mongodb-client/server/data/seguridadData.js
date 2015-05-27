@@ -4,10 +4,10 @@ var mongodb = require('./mongodb.js')
 var mongoCol = "usuarios"
 var sesiones = [];
 
-module.exports.posttingUsuario = function (usuario) {
+module.exports.postingUsuario = function (usuario) {
 	var deferred = Q.defer();
 	mongodb.finding(mongoCol, {
-		email: email
+		email: usuario.email
 	}).then(function (result) {
 		if (result[0]) {
 			console.log('email ya registrado:' + usuario.email);
@@ -21,11 +21,11 @@ module.exports.posttingUsuario = function (usuario) {
 	return deferred.promise;
 }
 
-module.exports.posttingSesion = function (usuario) {
+module.exports.postingSesion = function (usuario) {
 	var deferred = Q.defer();
 	mongodb.finding(mongoCol, {
-		email: email,
-		password: password
+		email: usuario.email,
+		password: usuario.password
 	}).then(function (result) {
 		if (result[0]) {
 			console.log('aceptado:' + usuario.email);

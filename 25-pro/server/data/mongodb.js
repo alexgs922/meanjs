@@ -6,9 +6,9 @@ var mongoUrl = "mongodb://localhost:27017/control_caja";
 exports.ObjectId = mondodb.ObjectID;
 exports.connecting = connecting;
 exports.finding = finding;
-exports.aggregating = aggregating;
 exports.inserting = inserting;
 exports.updating = updating;
+exports.aggregating = aggregating;
 
 function connecting(mongoCol) {
 	var deferred = Q.defer();
@@ -27,20 +27,6 @@ function finding(mongoCol, query) {
 	connecting(mongoCol)
 		.then(function (colDb) {
 			colDb.find(query).toArray(function (err, result) {
-				callback2Promise(err, result, deferred);
-			});
-		})
-		.fail(function (err) {
-			callback2Promise(err, result, deferred);
-		});
-	return deferred.promise;
-}
-
-function aggregating(mongoCol, query) {
-	var deferred = Q.defer();
-	connecting(mongoCol)
-		.then(function (colDb) {
-			colDb.aggregate(query, function (err, result) {
 				callback2Promise(err, result, deferred);
 			});
 		})
@@ -69,6 +55,21 @@ function updating(mongoCol, query, document) {
 	connecting(mongoCol)
 		.then(function (colDb) {
 			colDb.update(query, document, function (err, result) {
+				callback2Promise(err, result, deferred);
+			});
+		})
+		.fail(function (err) {
+			callback2Promise(err, result, deferred);
+		});
+	return deferred.promise;
+}
+
+function aggregating(mongoCol, pipeline) {
+	var deferred = Q.defer();
+	connecting(mongoCol)
+		.then(function (colDb) {
+			colDb.aggregate(pipeline, function (err, result) {
+				console.log(JSON.stringify(result));
 				callback2Promise(err, result, deferred);
 			});
 		})
