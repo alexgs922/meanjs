@@ -1,15 +1,12 @@
 (function () {
     // El controlador ahora tiene una dependencia de la factoría
-    // Las dependencias se buscan en nuestro módulo 
+    // Las dependencias se buscan en nuestro módulo
     // o en cualquiera de sus dependencias
-    var cajaCtrl = function (movimientosFactory) {
+    var cajaCtrl = function (movimientosFactory,maestrosService) {
         var vm = this;
-        
+
         vm.titulo = "Controla tu Cash Flow";
-        vm.maestros = {
-            categoriasIngresos: ['Nómina', 'Ventas', 'Intereses Depósitos'],
-            categoriasGastos: ['Hipotéca', 'Compras', 'Impuestos']
-        };
+        vm.maestros = maestrosService.categarias;
         vm.nuevoMovimiento = {
             esIngreso: 1,
             esGasto: 0,
@@ -21,23 +18,12 @@
         vm.total = movimientosFactory.getTotal();
 
         vm.guardarMovimiento = function () {
-            if(vm.nuevoMovimiento.esIngreso){
-				vm.total.ingresos += vm.nuevoMovimiento.importe;
-			}else{
-				vm.total.gastos += vm.nuevoMovimiento.importe;
-			}
             var auxCopyMov = angular.copy(vm.nuevoMovimiento);
-            auxCopyMov.tipo = vm.tipo(auxCopyMov);
-            // realmente estamos escribiendo en el array que mantiene la factoría
-            vm.movimientos.push(auxCopyMov);
-            vm.nuevoMovimiento.importe = 0;
+            movimientosFactory.postMovimiento(auxCopyMov);
+            vm.nuevoMovimiento.importe=0;
         }
-        vm.balance = function () {
-            return vm.total.ingresos - vm.total.gastos
-        }
-        vm.tipo = function (movimiento) {
-            return movimiento.esIngreso && 'Ingreso' || 'Gasto'
-        }
+        vm.balance = movimientosFactory.balance();
+        vm.tipo = movimientosFactory.tipo;
     }
-    angular.module('controlCajaApp').controller('CajaCtrl', cajaCtrl);
+    angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
 }());

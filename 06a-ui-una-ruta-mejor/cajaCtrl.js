@@ -1,21 +1,13 @@
-// El controlador permanece común a las tres vistas
-// En principio esto facilita la programación
 (function () {
-    var cajaCtrl = function () {
+
+    var cajaCtrl = function (movimientosFactory) {
         var vm = this;
 
         vm.titulo = "Controla tu Cash Flow";
-
-        vm.total = {
-            ingresos: 0,
-            gastos: 0
-        };
-
         vm.maestros = {
             categoriasIngresos: ['Nómina', 'Ventas', 'Intereses Depósitos'],
             categoriasGastos: ['Hipotéca', 'Compras', 'Impuestos']
         };
-
         vm.nuevoMovimiento = {
             esIngreso: 1,
             esGasto: 0,
@@ -23,10 +15,11 @@
             fecha: new Date()
         };
 
-        vm.movimientos = [];
+        vm.movimientos = movimientosFactory.getMovimientos();
+        vm.total = movimientosFactory.getTotal();
 
         vm.guardarMovimiento = function () {
-			if(vm.nuevoMovimiento.esIngreso){
+            if(vm.nuevoMovimiento.esIngreso){
 				vm.total.ingresos += vm.nuevoMovimiento.importe;
 			}else{
 				vm.total.gastos += vm.nuevoMovimiento.importe;
@@ -43,6 +36,5 @@
             return movimiento.esIngreso && 'Ingreso' || 'Gasto'
         }
     }
-
     angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
 }());

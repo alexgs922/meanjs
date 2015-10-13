@@ -10,11 +10,11 @@
                         <label class="control-label" for="tipo">Tipo</label>
                         <div class="controls">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-success" ng-class="{'active':caja.nuevoMovimiento.esIngreso==1}" ng-click="caja.nuevoMovimiento.esIngreso=1; caja.nuevoMovimiento.esGasto=0">
-                                    <span ng-class="{'small':caja.nuevoMovimiento.esIngreso==0}">+ Ingreso</span>
+                                <button type="button" class="btn btn-success" ng-class="{'active':caja.nuevoMovimiento.esIngreso}" ng-click="caja.nuevoMovimiento.esIngreso=1; caja.nuevoMovimiento.esGasto=0">
+                                    <span ng-class="{'small':caja.nuevoMovimiento.esGasto}">+ Ingreso</span>
                                 </button>
-                                <button type="button" class="btn btn-danger" ng-class="{'active':caja.nuevoMovimiento.esGasto==1}" ng-click="caja.nuevoMovimiento.esIngreso=0; caja.nuevoMovimiento.esGasto=1">
-                                    <span ng-class="{'small':caja.nuevoMovimiento.esGasto==0}">- Gasto</span>
+                                <button type="button" class="btn btn-danger" ng-class="{'active':caja.nuevoMovimiento.esGasto}" ng-click="caja.nuevoMovimiento.esIngreso=0; caja.nuevoMovimiento.esGasto=1">
+                                    <span ng-class="{'small':caja.nuevoMovimiento.esIngreso}">- Gasto</span>
                                 </button>
                             </div>
                         </div>

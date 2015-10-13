@@ -12,28 +12,39 @@
             ingresos: 0,
             gastos: 0
         };
-
-        // las factorias siempre devuelven objetos (en este caso le llamo factory)
+        // las factorias siempre devuelven objetos, para eso son fábricas
+		// en este caso le llamo result
         // Estos objetos pueden contener funciones de lógica reutilizables
-        
-        var factory  =   {};
-        factory.getMovimientos =   function ()  {
+        var result  =   {};
+
+        /** lista de los movimientos actuales */
+        result.getMovimientos =   function ()  {
             return movimientos;
         };
-        factory.getTotal =   function ()  {
+        /** objeto total actual */
+        result.getTotal =   function ()  {
             return total;
         };
-        factory.postMovimiento =   function (movimiento)  {
+        /** guardar un nuevo movimiento */
+        result.postMovimiento =   function (movimiento)  {
             movimientos.push(movimiento);
             total.ingresos += movimiento.esIngreso * movimiento.importe;
             total.gastos += movimiento.esGasto * movimiento.importe;
         };
-        // Exponemos funionalidad devolviendo el objeto creado, 
-        // para que el cliente explote sus métodos 
-        return factory;
+        /** acceso al balance */
+        result.balance = function () {
+            return total.ingresos - total.gastos
+        }
+        /** función auxiliar para cabiar de movimiento */
+        result.tipo = function (movimiento) {
+            return movimiento.esIngreso && 'Ingreso' || 'Gasto'
+        }
+
+        // Exponemos funcionalidad devolviendo el objeto creado,
+        // para que el cliente explote sus métodos
+        return result;
     };
-    
     // se registran dentro de un módulo con la palabra clave factory
-    angular.module('controlCajaApp').factory('movimientosFactory', movimientosFactory);
+    angular.module('cashFlow').factory('movimientosFactory', movimientosFactory);
 }());
 
