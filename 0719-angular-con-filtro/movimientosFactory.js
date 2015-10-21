@@ -1,18 +1,14 @@
 (function () {
-
 	angular.module('cashFlow').factory('movimientosFactory', movimientosFactory);
 
 	function movimientosFactory()  {
 
 		var movimientos = [];
-
 		var total = {
 			ingresos: 0,
 			gastos: 0
 		};
-
 		var result  =   {};
-
 
 		result.getMovimientos =   function ()  {
 			return movimientos;
@@ -35,7 +31,6 @@
 		result.tipo = function (movimiento) {
 			return movimiento.esIngreso && 'Ingreso' || 'Gasto'
 		}
-
 
 		return result;
 	};

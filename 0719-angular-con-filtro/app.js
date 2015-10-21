@@ -1,10 +1,7 @@
-// tenemos que cambiar la dependencia hacia el nuevo módulo
-angular.module('cashFlow', ['ui.router']);
+// tenemos que agregar la dependencia hacia el nuevo módulo de filtros
+angular.module('cashFlow', ['ui.router', 'abFiltros']);
 
-// las rutas ahora se maneja con el concepto de estado
 angular.module('cashFlow').config(function ($stateProvider) {
-	// Las rutas pasan a ser opcionales,
-	// en la práctica sólo se usan si vienen de aplicaciones externas y por cuestiones de SEO
 	$stateProvider
 		.state('total', {
 			url: '/',
@@ -24,6 +21,4 @@ angular.module('cashFlow').config(function ($stateProvider) {
 			url: '*path',
 			templateUrl: 'not-found.html'
 		});
-	// realmente no existe un estado 'not found',
-	// pero puede llegar rutas no controladas
 });

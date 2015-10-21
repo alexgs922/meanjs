@@ -1,5 +1,15 @@
 (function () {
+
+	// Podemos usar una sintaxis fluida y declarar todo en una solo línea
+	// Atención a la declaración de un nuevo módulo genérico
+	angular.module('abFiltros', [])
+		.filter('abLimpiarCadena', limpiarCadena)
+		.filter('abRecortar', recortar)
+		.filter('abRellenarVacios', rellenarVacios)
+		.filter('abGranImporte', granImporte);
+
 	// Los filtros se declaran como funciones que a su vez devuelven... funciones
+
 
 	// Esas funciones internas se aplican sobre los valores,
 	// Tienen al menos un parámetro, que sirve de entrada
@@ -73,12 +83,4 @@
 		};
 		return funcionFiltro;
 	}
-
-	// Podemos usar una sintaxis fluida y declarar todo en una solo línea
-	// Atención a la declaración de un nuevo módulo genérico
-	angular.module('abFiltros', [])
-		.filter('abLimpiarCadena', limpiarCadena)
-		.filter('abRecortar', recortar)
-		.filter('abRellenarVacios', rellenarVacios)
-		.filter('abGranImporte', granImporte);
 }());

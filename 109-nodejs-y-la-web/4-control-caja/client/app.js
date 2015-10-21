@@ -1,6 +1,7 @@
-// Incluimos referencia a un módulo propio, con un prefijo propio
-angular.module('controlCajaApp', ['ui.router','ngCookies', 'ngResource', 'abFiltros']);
+// tenemos que cambiar la dependencia hacia el nuevo módulo
+angular.module('controlCajaApp', ['ui.router']);
 
+// las rutas ahora se maneja con el concepto de estado
 angular.module('controlCajaApp').config(function ($stateProvider,$locationProvider) {
 	$stateProvider
         .state('total', {
@@ -17,18 +18,7 @@ angular.module('controlCajaApp').config(function ($stateProvider,$locationProvid
         	url: '/lista',
 			controller: 'CajaCtrl as caja',
             templateUrl: 'lista.html'
-        })
-		.state('movimiento', {
-        	url: '/movimiento/:id', // declaracion de parametros en rutas
-			controller: 'MovimientoCtrl as vm',
-            templateUrl: 'movimiento.html'
-        })
-        .state('registro', {
-        	url: '/registro',
-			controller: 'RegistroCtrl as registro',
-            templateUrl: 'registro.html'
-        })
-        .state('not-found', {
+        }).state('not-found', {
         	url: '*path',
             controller: 'CajaCtrl as caja',
             templateUrl: 'total.html'
