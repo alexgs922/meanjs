@@ -7,7 +7,7 @@ angular.module('cashFlow').config(function ($stateProvider) {
     // en la práctica sólo se usan si vienen de aplicaciones externas y por cuestiones de SEO
     $stateProvider
         .state('total', {
-			url: '/',
+			url: '',
             controller: 'CajaCtrl as caja',
             templateUrl: 'total.html'
         })
