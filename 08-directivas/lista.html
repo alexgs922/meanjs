@@ -20,9 +20,11 @@
 			<!-- Sustituimos el contenido de cada fila por un componente -->
 			<tr ng-repeat="movimientoRepeater in caja.movimientos | abGranImporte:caja.valorCorte | filter:caja.valorBuscado | orderBy:caja.campo:caja.sentido"
 			ab-fila-movimiento movimientodirectiva="movimientoRepeater"
+			ab-seleccionado
 			>
 				<!-- El componente abFilaMovimiento recibe un parámetro vía atributos
 				los nombres de las variables pueden ser distintos a nivel de cliente, directiva y plantilla-->
+				<!-- La directiva abSeleccionado cambia el fondo cuando el ratón está encima-->
 			</tr>
 		</tbody>
 	</table>

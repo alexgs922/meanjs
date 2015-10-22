@@ -1,5 +1,5 @@
 // tenemos que agregar la dependencia hacia el nuevo módulo de directivas
-angular.module('cashFlow', ['ui.router', 'abFiltros' , 'abComponentes']);
+angular.module('cashFlow', ['ui.router', 'abFiltros' , 'abComponentes', 'abDirectivas', 'abValoracion']);
 
 angular.module('cashFlow').config(function ($stateProvider) {
 	$stateProvider

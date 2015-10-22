@@ -1,4 +1,3 @@
-<td class="text-left"><a ui-sref="movimiento({id:movimientoplantilla.id})">{{movimientoplantilla.id }}</a> </td>
 <td class="text-left">{{movimientoplantilla.fecha | date}}</td>
 <td class="text-left">{{movimientoplantilla.tipo}}</td>
 <td class="text-left">{{movimientoplantilla.categoria}}</td>
@@ -6,5 +5,6 @@
 	{{movimientoplantilla.importe | number:2}} €
 </td>
 <td class="text-left">
+	<!--Uso de la directiva abValoracion para mostrar las estrellas en modo solo lectura-->
 	<ab-valoracion valor="movimientoplantilla.valoracion" max="10" solo-lectura="true"></ab-valoracion>
 </td>
