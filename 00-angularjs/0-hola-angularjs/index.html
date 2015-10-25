@@ -16,7 +16,6 @@
 <body class="container-fluid">
     <header>
         <h1>Hola Mundo AngularJS</h1>
-        
     </header>
     <section>
         <div>
@@ -27,7 +26,9 @@
         <br/>
         <!--Interpolación en el contenido de una expresión {{entre llaves}} que usa una propiedadad del modelo-->
         <div class="text-info">Hola {{ tuNombre }}, bienvenido al mundo de AngularJS !!!</div>
+        <!--Multiples Directivas ng-model para enlazar la vista con una ovarias propiedades del modelo-->
         <input ng-model="numero1">
+        <input ng-model="numero2">
         <input ng-model="numero2">
         <h2>uno + uno son {{ numero1*1 + numero2*1}} </h2>
     </section>
