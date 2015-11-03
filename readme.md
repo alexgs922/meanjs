@@ -22,11 +22,6 @@
 - 08
 - 09
 
-### De consumidor a productor
-- 07
-- 08
-- 09
-
 ### Servicios http desde AngularJS
 - 10
 - 11
