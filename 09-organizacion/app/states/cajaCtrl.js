@@ -1,5 +1,7 @@
 (function () {
-	var cajaCtrl = function (movimientosFactory, maestrosService) {
+	angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
+
+	function cajaCtrl(movimientosFactory, maestrosService) {
 		var vm = this;
 
 		vm.titulo = "Controla tu Cash Flow";
@@ -21,5 +23,5 @@
 		vm.balance = movimientosFactory.balance;
 		vm.tipo = movimientosFactory.tipo;
 	}
-	angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
+
 }());

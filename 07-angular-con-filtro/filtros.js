@@ -17,7 +17,7 @@
 
 	// Esta función le quita acentos, guiones bajos, y caracteres raros
 	// Los sustituye por guiones bajos
-	function limpiarCadena() {
+	function limpiarCadena($http) {
 		var funcionFiltro = function (cadena) {
 			if (cadena) {
 				var resultado = cadena.toLowerCase();
@@ -68,18 +68,15 @@
 	// Permite tener filtros predeterminadois en un array
 	function granImporte() {
 		var funcionFiltro = function (movimientos, valorCorte) {
-			if (valorCorte) {
-				var filtrados = [];
-				for (var i = 0; i < movimientos.length; i++) {
-					var mov = movimientos[i];
-					if (mov.importe >= valorCorte) {
-						filtrados.push(mov);
-					}
-				}
-				return filtrados;
-			} else {
-				return movimientos;
-			}
+			var corte = valorCorte || 1000;
+            var filtrados = [];
+            for (var i = 0; i < movimientos.length; i++) {
+                var mov = movimientos[i];
+                if (mov.importe >= corte) {
+                    filtrados.push(mov);
+                }
+            }
+            return filtrados;
 		};
 		return funcionFiltro;
 	}

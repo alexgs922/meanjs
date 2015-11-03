@@ -1,5 +1,7 @@
 <section name="Lista">
-	<div ab-cabecera>Estos son tus movimientos recientes.</div>
+	<div ab-cabecera>Estos son tus movimientos recientes.
+	    <h1>HOLA ABANCA</h1>
+	</div>
 	<br>
 	<label class="control-label" for="importe">Filtrar:</label>
 	<input type="text" name="filtro" placeholder="qué buscas?" class="input" ng-model="caja.valorBuscado">
@@ -18,8 +20,9 @@
 		</thead>
 		<tbody>
 			<!-- Sustituimos el contenido de cada fila por un componente -->
-			<tr ng-repeat="movimientoRepeater in caja.movimientos | abGranImporte:caja.valorCorte | filter:caja.valorBuscado | orderBy:caja.campo:caja.sentido"
-			ab-fila-movimiento movimientodirectiva="movimientoRepeater"
+			<tr ng-repeat="movimiento in caja.movimientos | abGranImporte:caja.valorCorte | filter:caja.valorBuscado | orderBy:caja.campo:caja.sentido"
+			ab-fila-movimiento
+			movimiento="movimiento"
 			ab-seleccionado
 			>
 				<!-- El componente abFilaMovimiento recibe un parámetro vía atributos

@@ -32,5 +32,39 @@ function configurarRutas($routeProvider) {
         });
 }
 
+
+function suma(a,b){
+    var c= a + b;
+    console.log(c);
+}
+
+angular.module('cashFlow').value('a',5);
+
+angular.module('cashFlow').value('b',7);
+
 // Se registra la función como un configurador del módulo
-angular.module('cashFlow').config(configurarRutas);
+angular.module('cashFlow').config(suma);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

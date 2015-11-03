@@ -47,13 +47,22 @@
     // Los elementos tr dentro de un table requieren definirse explícitamente
     function filaMovimiento() {
         return {
-            restrict: 'A',
+            //restrict: 'A',
             templateUrl: './tpl-fila-movimiento.html',
             scope: {
-                movimientoplantilla: "=movimientodirectiva"
+                movimiento: "="
             }
         };
     }
+
+
+
+
+
+
+
+
+
 
 
 }());
