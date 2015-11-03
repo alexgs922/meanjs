@@ -5,10 +5,9 @@
 
 
 ## 1. Introducción a AngularJS y NodeJS
-
+- 00
 
 ### Vistas, controladores y factorías
-- 00
 - 01
 - 02
 - 03
@@ -18,17 +17,33 @@
 - 05
 - 06
 
-### NodeJS: JavaScript fuera del navegador
+### De consumidor a productor
 - 07
 - 08
 - 09
 
-### Npm y gestión básica de paquetes
+### De consumidor a productor
+- 07
+- 08
+- 09
+
+### Servicios http desde AngularJS
 - 10
+- 11
+- 12
 
 
-> SPA con tres Vistas: [eventos,métricas,servicios] 
+### Reorganización en módulos
+- 13
 
+
+**Pendiente revisar**
+
+
+### NodeJS: JavaScript fuera del navegador
+- 07
+- 08
+- 09
 
 ## 2. Acceso a servicios remotos
 
