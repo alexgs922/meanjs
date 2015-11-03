@@ -7,6 +7,6 @@
 			transclude: true,
 			templateUrl: './app/components/cabecera/cabecera.html'
 		};
-	};
-
+	};	
+		
 }());

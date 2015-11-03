@@ -21,7 +21,7 @@
 		<tbody>
 			<!-- Sustituimos el contenido de cada fila por un componente -->
 			<tr ng-repeat="movimiento in caja.movimientos | abGranImporte:caja.valorCorte | filter:caja.valorBuscado | orderBy:caja.campo:caja.sentido"
-			ab-fila-movimiento
+			ab-fila-movimiento    
 			movimiento="movimiento"
 			ab-seleccionado
 			>

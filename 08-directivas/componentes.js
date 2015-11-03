@@ -49,20 +49,20 @@
         return {
             //restrict: 'A',
             templateUrl: './tpl-fila-movimiento.html',
-            scope: {
+            scope: {    
                 movimiento: "="
             }
         };
     }
 
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }());

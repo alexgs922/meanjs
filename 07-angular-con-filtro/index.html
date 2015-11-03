@@ -36,17 +36,17 @@
 	<div class="container text-center" style="padding-top:50px;" ui-view>
 
 	</div>
-
+	
 	<span ng-init="texto='hola-Mundo@ABANCA.es'; movimientos=[{importe:1001}, {importe:999}] "></span>
 	<h1>{{ texto | uppercase | lowercase | abLimpiarCadena | abRecortar:4 }}</h1>
 	<h2>{{movimientos | abGranImporte
-
+	
 	  }}
-
+	  
 	  </h2>
-
-
-
+	
+	
+	
 	<!-- JavaScript References -->
 	<script src="/refs/angular.min.js"></script>
 	<script src="/refs/angular-ui-router.min.js"></script>

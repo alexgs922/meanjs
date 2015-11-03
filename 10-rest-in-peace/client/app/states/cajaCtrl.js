@@ -25,7 +25,7 @@
 		vm.movimientos = movimientosFactory.getMovimientos();
 		vm.total = movimientosFactory.getTotal();
 
-
+		
 		*/
 
 		vm.movimientos = [];

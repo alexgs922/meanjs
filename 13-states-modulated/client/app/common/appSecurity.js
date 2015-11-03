@@ -10,7 +10,7 @@
 
 	function funcionInterceptoraSeguridad($injector, $q, $cookies, $rootScope) {
 
-		var interceptor = {};
+		var interceptor = {}; 
 
 		interceptor.request = function (request) {
 			request.headers["sessionId"] = $cookies.get("sessionId");

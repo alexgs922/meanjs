@@ -17,7 +17,7 @@
     }
 	function seleccionado(seleccionadoLink) {
 		return {
-			link: seleccionadoLink
+			link: seleccionadoLink 
 		};
 	}
 

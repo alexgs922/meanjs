@@ -32,7 +32,7 @@
 		vm.nuevoMovimiento = new servicio_nuevo.Movimientos();
 		vm.nuevoMovimiento.esIngreso = 1;
 		vm.nuevoMovimiento.fecha = new Date();
-
+        
         vm.guardarMovimiento = function () {
 			vm.nuevoMovimiento.tipo = vm.tipo(vm.nuevoMovimiento);
 			vm.nuevoMovimiento.$save()

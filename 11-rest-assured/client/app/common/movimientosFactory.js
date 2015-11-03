@@ -4,7 +4,7 @@
 	function movimientosFactory($http)  {
 
 		var result  =   {};
-
+	
 		result.gettingMovimientos =   function ()  {
 			return $http.get('api/priv/movimientos');
 		};

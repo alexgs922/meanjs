@@ -18,7 +18,7 @@
             vm.maestros = {
                 categoriasIngresos: ['Nómina', 'Ventas', 'Intereses Depósitos'],
                 categoriasGastos: ['Hipotéca', 'Compras', 'Impuestos']
-            };
+            };   
             vm.nuevoMovimiento = {
                 esIngreso: 1,
                 esGasto: 0,

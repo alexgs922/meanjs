@@ -26,7 +26,7 @@
 			ingresos: 0,
 			gastos: 0
 		};
-
+		
 		movimientosFactory.gettingMovimientos()
 			.success(function (movimientos) {
 				vm.movimientos = movimientos;
