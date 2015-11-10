@@ -6,7 +6,7 @@
 var stdin = process.openStdin();
 
 var nombre = 'Anónimo';
-var edad = 43;
+var edad = 23;
 
 console.log("¿Cómo te llamas ?");
 
@@ -17,10 +17,10 @@ stdin.addListener("data", alRecibirDatos);
 
 // función callback que se ejecutara en respuesta al evento
 function alRecibirDatos(data) {
-    nombre = data.toString().substring(0, data.length - 1);
-    imprimir();
+	nombre = data.toString().substring(0, data.length - 1);
+	imprimir();
 }
 
 function imprimir() {
-    console.log(nombre + " tiene " + edad + " años");
+	console.log(nombre + " tiene " + edad + " años");
 }

@@ -1,31 +1,22 @@
-// En este caso 'simulamos' una Clase instanciable
-var CuentaExportable = (function(){
-	// un módulo puede a su vez requerir de otros
-	var Mates = require('./mates.js');
+// En este caso 'simulamos' una Clase instanciable mediante una función
 
-	// La cuenta tendrá una función que acturá de constructor
-	var Cuenta = function (propietario) {
-		this.propietario = propietario;
-		this.saldo = 0;
-		console.log("creada cuenta para "  + this.propietario + " con " + this.saldo + "€")
-    };
+// un módulo puede a su vez requerir de otros
+var Mates = require('./mates.js');
 
-	// una vez creada una variable, se le pueden agregar métodos y propiedades
-	Cuenta.prototype = {
-		ingresar: function(dinero){
-			this.saldo = Mates.sumar(this.saldo,dinero);
-			console.log("ingresar: " + dinero + " a " + this.propietario + " tiene " + this.saldo + "€");
-		},
-		retirar: function(dinero){
-			this.saldo = Mates.restar(this.saldo,dinero);
-			console.log("retirar: " + dinero + " a " + this.propietario + " tiene " + this.saldo + "€");
-		}
+var Cuenta = function (propietario) {
+	this.propietario = propietario;
+	this.saldo = 0;
+	// a una funcion se le pueden agregar más métodos y propiedades
+	this.ingresar = function (dinero) {
+		// aquí this apunta al módulo, no a la función interna
+		this.saldo = Mates.sumar(this.saldo, dinero);
+		console.log("ingresar: " + dinero + " a " + this.propietario + " tiene " + this.saldo + "€");
 	}
+	this.retirar = function (dinero) {
+		this.saldo = Mates.restar(this.saldo, dinero);
+		console.log("retirar: " + dinero + " a " + this.propietario + " tiene " + this.saldo + "€");
+	}
+}
 
-	return Cuenta;
-})();
 
-// se exporta la variable CuentaExportable,
-// dicha variable apunta a una función que retorna un objeto
-
-module.exports = CuentaExportable;
+module.exports = Cuenta;
