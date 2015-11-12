@@ -1,5 +1,7 @@
+(function () {
+
 /** original */
-angular.module('cashFlow', ['ngResource', 'ngCookies', 'ui.router', 'registro', 'lista', 'total', 'nuevo', 'abComponentes', 'abMenuNavegacion']);
+angular.module('cashFlow', ['ngResource','seguridad', 'ngCookies', 'ui.router', 'registro', 'lista', 'total', 'nuevo', 'abComponentes', 'abMenuNavegacion']);
 
 /** estructura modular jerárquica */
 angular.module('cashFlow', ['terceros', 'componentes', 'estados']);
@@ -8,3 +10,5 @@ angular.module('componentes', 'abComponentes', 'abMenuNavegacion']);
 angular.module('estados', ['registro', 'lista', 'total', 'nuevo']);
 
 /** módulos para cada componente */
+    
+}());

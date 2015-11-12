@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('cashFlow').config(configuradorInterceptores);
+	angular.module('seguridad').config(configuradorInterceptores);
 
 	function configuradorInterceptores($httpProvider) {
 		/** la configuración de $http sirve para $resource */
