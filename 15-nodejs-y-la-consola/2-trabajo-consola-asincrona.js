@@ -17,7 +17,7 @@ stdin.addListener("data", alRecibirDatos);
 
 // función callback que se ejecutara en respuesta al evento
 function alRecibirDatos(data) {
-	nombre = data.toString().substring(0, data.length - 1);
+	nombre = data.toString().substring(0, data.length - 2);
 	imprimir();
 }
 
