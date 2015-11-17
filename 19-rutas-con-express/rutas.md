@@ -5,7 +5,7 @@
 ## Parámetros
 	- /:parametro/
 ## Variantes con patrones de cadenas y expresiones regulares
-	- se usan tando en las rutas como sobre todo en los parámetros
+	- se usan tanto en las rutas como sobre todo en los parámetros
 
 	
 	

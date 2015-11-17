@@ -8,6 +8,8 @@ billetero.ingresar("10");
 ratilla.ingresar(12.8);
 ratilla.retirar(2.4);
 billetero.retirar("1");
+billetero.retirar("1");
+ratilla.ingresar(5);
 
 console.log(ratilla.propietario + " tiene " + ratilla.saldo + " euros");
 console.log(billetero.propietario + " tiene " + billetero.saldo + " euros");
