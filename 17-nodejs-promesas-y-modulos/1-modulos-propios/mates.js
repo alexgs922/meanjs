@@ -8,7 +8,8 @@ var matematicas = {
 	},
 	restar: function (a, b) {
 		return obtenerNumero(a) - obtenerNumero(b);
-	}
+	},
+    obNum: obtenerNumero
 };
 
 /** esta función es privada */
@@ -20,3 +21,17 @@ function obtenerNumero(texto) {
 
 // exportamos la variable que queramos
 module.exports = matematicas;
+
+// cuidado, al redefinir el mismo nombre se llama dos veces
+module.exports.obNum = obtenerNumero;
+
+
+
+
+
+
+
+
+
+
+

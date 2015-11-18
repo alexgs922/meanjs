@@ -4,6 +4,7 @@
 var Mates = require('./mates.js');
 
 var Cuenta = function (propietario) {
+    console.log(Mates.obNum("4"));
 	this.propietario = propietario;
 	this.saldo = 0;
 	// a una funcion se le pueden agregar más métodos y propiedades
