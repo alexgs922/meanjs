@@ -1,6 +1,6 @@
 "use strict";
 (function () {
-	var componentName = "nuevo";
+	var componentName = "editor";
 	angular
 		.module(componentName, ['ui.router', 'ngResource', 'abDirectivas', 'abValoracion', 'abCabecera'])
 		.config(stateConfig)
@@ -10,7 +10,7 @@
 	function stateConfig($stateProvider) {
 		$stateProvider
 			.state(componentName, {
-				url: '/' + componentName,
+				url: '/' + componentName + "/:id",
 				template: '<' + componentName + '></' + componentName + '>'
 			});
 	}
@@ -25,29 +25,34 @@
 		}
 	}
 
-	function controller(servicio_nuevo, $state) {
+	function controller(servicio_editor, $state, $stateParams) {
 		var vm = this;
-		vm.maestros = servicio_nuevo.Maestros.get();
 
-		vm.nuevoMovimiento = new servicio_nuevo.Movimientos();
-		vm.nuevoMovimiento.esIngreso = 1;
-		vm.nuevoMovimiento.fecha = new Date();
+		var paramId = $stateParams.id;
 
-		vm.guardarMovimiento = function () {
-			vm.nuevoMovimiento.tipo = tipo(vm.nuevoMovimiento);
-			vm.nuevoMovimiento.$save()
+		servicio_editor.Movimientos.get({
+			id: paramId
+		}).$promise.then(function (data) {
+			var milliseconds = Date.parse(data.fecha)
+			if (!isNaN(milliseconds)) {
+				data.fecha = new Date(milliseconds);
+			}
+			vm.movimiento = data;
+		});
+
+
+		vm.actualizar = function () {
+			console.log(JSON.stringify(vm.movimiento));
+			vm.movimiento.$save()
 				.then(function (result) {
 					$state.go('lista');
 				});
 		};
-
-		var tipo = function (movimiento) {
-			return movimiento.esIngreso && 'Ingreso' || 'Gasto'
-		}
 	}
 
 	function service($resource) {
-		this.Maestros = $resource("/api/pub/maestros/");
-		this.Movimientos =  $resource("/api/priv/movimientos/");
+		this.Movimientos =  $resource("/api/priv/movimientos/:id", {
+			id: "@id"
+		});
 	}
 })();

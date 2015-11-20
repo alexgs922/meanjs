@@ -155,18 +155,46 @@ app.route('/api/priv/movimientos')
 // Para las rutas paramétircas creamos otro patrón
 // El recurso sigue siendo movimientos, y el parámetro se declara con :id
 // Obtención a partir de parámetros
-app.get('/api/priv/movimientos/:id', function (req, res, next) {
-	var movId = req.params.id;
-	// Buscar en el array el movimiento con este id
-	movimientoBuscado = getMovimientoById(movId, req.usuario);
-	res.json(movimientoBuscado);
-});
+app.route('/api/priv/movimientos/:id')
+	.get(function (req, res, next) {
+		var movId = req.params.id;
+		// Buscar en el array el movimiento con este id
+		movimientoBuscado = getMovimientoById(movId, req.usuario);
+		res.json(movimientoBuscado);
+	}).post(function (req, res, next) {
+		// Pod´ria programarse como un PUT, pero requiere cambios en $resource
+		var movId = req.params.id;
+		var nuevoMovimiento = req.body;
+		var totalUsuario = getTotalUsuario(req.usuario);
 
-function getMovimientoById(id,usuario) {
-	var movimientoBuscado = movimientos.filter(function (movimiento) {
+		// Buscar en el array el movimiento
+		movimientoBuscado = getMovimientoById(movId, req.usuario);
+		if (movimientoBuscado.tipo == 'Ingreso')
+			totalUsuario.ingresos -= movimientoBuscado.importe;
+		else
+			totalUsuario.gastos -= movimientoBuscado.importe;
+		// sustiruirlo
+		setMovimientoById(movId, req.usuario, nuevoMovimiento);
+		if (nuevoMovimiento.tipo == 'Ingreso')
+			totalUsuario.ingresos += nuevoMovimiento.importe;
+		else
+			totalUsuario.gastos += nuevoMovimiento.importe;
+		// devolverlo igualmente
+		res.json(nuevoMovimiento);
+	});
+
+function getMovimientoById(id, usuario) {
+	var movimientoBuscado = movimientos.find(function (movimiento) {
 		return movimiento.id == id && movimiento.usuario == usuario;
-	})[0];
+	});
 	return movimientoBuscado;
+}
+
+function setMovimientoById(id, usuario, movimiento) {
+	var movimientoBuscadoIndex = movimientos.findIndex(function (movimiento) {
+		return movimiento.id == id && movimiento.usuario == usuario;
+	});
+	movimientos[movimientoBuscadoIndex] = movimiento;
 }
 
 app.get('/api/priv/total', function (req, res, next) {
@@ -175,22 +203,29 @@ app.get('/api/priv/total', function (req, res, next) {
 });
 
 function getTotalUsuario(usuario) {
-    if(usuario===undefined) return {};
-    var totalUsuario = totales.filter(function (t) {
-        return t.usuario == usuario;
-    })[0];
-    if (totalUsuario===undefined) {
-        totalUsuario = {
-            usuario : usuario,
-            ingresos: 0,
-            gastos: 0
-        };
-        totales.push(totalUsuario);
-    }
-    return totalUsuario;
+	if (usuario === undefined) return {};
+	var totalUsuario = totales.filter(function (t) {
+		return t.usuario == usuario;
+	})[0];
+	if (totalUsuario === undefined) {
+		totalUsuario = {
+			usuario: usuario,
+			ingresos: 0,
+			gastos: 0
+		};
+		totales.push(totalUsuario);
+	}
+	return totalUsuario;
 }
 
 
 console.log('steady');
 app.listen(3000);
 console.log('go');
+
+/*
+To Do:
+- refactorizar sacando implementaciones de la fachada
+- DRY
+- tratar el parametro movId y transformarlo en un movimiento o un not found
+*/
