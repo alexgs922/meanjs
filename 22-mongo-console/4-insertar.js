@@ -1,4 +1,4 @@
-use control_caja
+use control_caja;
 
 function azar(desde, hasta) {
 	return Math.floor((Math.random() * hasta) + desde)
@@ -13,16 +13,16 @@ function tipo() {
 }
 
 function user() {
-	if (azar(0, 10) > 4) {
+	if (azar(0, 10) > 3) {
 		return 'albertobasalo@agorabinaria.com';
 	} else {
-		return 'reinaldo.aguilera@gmail.com';
+		return 'pepito@gmail.com';
 	}
 }
 
 for (i = 0; i < 100; i++) {
 	var movimiento = {
-		user: user();
+		user: user(),
 		tipo: tipo(),
 		importe: azar(100, 2500),
 		fecha: new Date(2015, azar(0, 11), azar(1, 30), 12, 0, 0)

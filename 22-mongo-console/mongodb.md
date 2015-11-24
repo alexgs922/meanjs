@@ -1,9 +1,9 @@
-#Comparción
+#Comparación
 
 ## Inconvenientes
-- No Joins
-- No Transactions 
-- No Integrity
+- No Transactions -> No Integrity
+- No Joins *hasta la versión 3.2*
+- No Schemma *hasta la versión 3.2*
 
 ## Ventajas
 - Velocidad

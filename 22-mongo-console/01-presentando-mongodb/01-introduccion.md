@@ -1,7 +1,7 @@
 # 01 - Introducción a MongoDB
 
 ## 01.1 - Documentos JSON
-[ver](./01.1-introduccion.md)
+[ver](./01.1-documentos-json.md)
 
 ## 01.2 - Bases de datos y colecciones de documentos
 [ver](./01.2-nomenclatura.md)

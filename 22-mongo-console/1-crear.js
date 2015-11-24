@@ -1,3 +1,6 @@
+// INSTRUCCIONES PARA SER EJECUTADAS DESDE LA TERMINAL
+
+
 use control_caja
 
 db.movimientos.drop()
@@ -20,6 +23,7 @@ var nomina_alberto = {
 	fecha: new Date(2015, 03, 01, 12,00, 00, 000)
 };
 db.movimientos.insert(nomina_alberto);
+db.movimientos.find();
 var hipoteca_alberto = {
 	user: 'albertobasalo@agorabinaria.com',
 	tipo: 'Gasto',
@@ -28,21 +32,21 @@ var hipoteca_alberto = {
 	fecha: new Date(2015, 03, 06, 12, 0, 00, 000)
 };
 db.movimientos.insert(hipoteca_alberto);
-var nomina_reinaldo = {
-	user: 'reinaldo.aguilera@gmail.com',
+var nomina_pepito = {
+	user: 'pepito@gmail.com',
 	tipo: 'Ingreso',
 	categoria: 'Nómina',
 	importe: 1100,
 	fecha: new Date(2015, 03, 02, 12, 0, 00, 000)
 };
-db.movimientos.insert(nomina_reinaldo);
-var hipoteca_reinaldo = {
-	user: 'reinaldo.aguilera@gmail.com',
+db.movimientos.insert(nomina_pepito);
+var hipoteca_pepito = {
+	user: 'pepito@gmail.com',
 	tipo: 'Gasto',
 	categoria: 'Hipoteca',
 	importe: 450,
 	fecha: new Date(2015, 03, 04, 12, 0, 00, 000)
 };
-db.movimientos.insert(hipoteca_reinaldo);
+db.movimientos.insert(hipoteca_pepito);
 
-db.movimientos.find();
+db.movimientos.find().pretty();
