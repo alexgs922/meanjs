@@ -5,7 +5,9 @@ var app = express();
 app.use(bodyParser());
 app.use(express.static(__dirname + '/client'));
 
+// Modularidad en NodeJS mediante require/export
 var movimientosData = require('./movimientosData.js');
+// To Do: un módulo para el API demovimientos y otro para seguridad
 
 console.log('ready');
 
@@ -39,11 +41,6 @@ app.use('/api/priv/', function (req, res, next) {
 // API - REST
 // SECURITY
 app.route('/api/usuarios')
-	.get(function (req, res, next) {
-		// Esto devuelve la lista completa de usuarios y contraseñas
-		// PELIGRO: Usar sólo a modo de debug mientras desarrollamos
-		res.json(usuarios);
-	})
 	.post(function (req, res, next) {
 		var usuario = req.body;
 		if (existeUsuario(usuario)) {
@@ -58,11 +55,6 @@ app.route('/api/usuarios')
 
 // Gestión de sesiones: listado y login
 app.route('/api/sesiones')
-	.get(function (req, res, next) {
-		// Esto devuelve la lista completa de sesiones
-		// PELIGRO: Usar sólo a modo de debug mientras desarrollamos
-		res.json(sesiones);
-	})
 	.post(function (req, res, next) {
 		var usuario = req.body;
 		if (esUsuarioValido(usuario)) {
@@ -119,11 +111,10 @@ app.get('/api/pub/maestros', function (req, res, next) {
 
 app.route('/api/priv/movimientos')
 	.get(function (req, res, next) {
-		movimientosData.gettingMovimientos(req.usuario, function(err, result){
-			if(err){
-				 res.status(500).send(err);
-			}
-			else{
+		movimientosData.gettingMovimientos(req.usuario, function (err, result) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
 				res.json(result);
 			}
 		})
@@ -131,11 +122,10 @@ app.route('/api/priv/movimientos')
 	.post(function (req, res, next) {
 		var movimiento = req.body;
 		movimiento.usuario = req.usuario;
-		movimientosData.postingMovimiento(movimiento,function(err, result){
-			if(err){
-				 res.status(500).send(err);
-			}
-			else{
+		movimientosData.postingMovimiento(movimiento, function (err, result) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
 				res.json(movimiento);
 			}
 		})
@@ -145,33 +135,30 @@ app.route('/api/priv/movimientos')
 app.route('/api/priv/movimientos/:id')
 	.get(function (req, res, next) {
 		var movId = req.params.id;
-		movimientosData.gettingMovimiento(movId,req.usuario, function(err, result){
-			if(err){
-				 res.status(500).send(err);
-			}
-			else{
+		movimientosData.gettingMovimiento(movId, req.usuario, function (err, result) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
 				res.json(result[0]);
 			}
 		})
 	}).post(function (req, res, next) {
 		var movId = req.params.id;
 		var nuevoMovimiento = req.body;
-		movimientosData.puttingMovimiento(nuevoMovimiento,function(err, result){
-			if(err){
-				 res.status(500).send(err);
-			}
-			else{
+		movimientosData.puttingMovimiento(nuevoMovimiento, function (err, result) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
 				res.json(nuevoMovimiento);
 			}
 		})
 	});
 
 app.get('/api/priv/total', function (req, res, next) {
-	movimientosData.gettingTotalUsuario(req.usuario, function(err, result){
-		if(err){
-				res.status(500).send(err);
-		}
-		else{
+	movimientosData.gettingTotalUsuario(req.usuario, function (err, result) {
+		if (err) {
+			res.status(500).send(err);
+		} else {
 			res.json(result);
 		}
 	})
