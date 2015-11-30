@@ -34,31 +34,31 @@ https://www.digitalocean.com/?refcode=a837eb86b396
 - 13
 
 
-**Pendiente revisar**
-
-
 ### NodeJS: JavaScript fuera del navegador
-- 07
-- 08
-- 09
-
-## 2. Acceso a servicios remotos
-
-
-### Un API Rest con Express
-- 11
-- 12
-- 13
-
-
-### Consumo del API en AngularJS
 - 14
-
-
-### Rutas, Cookies, Cabeceras, Seguridad e Interceptores
 - 15
 - 16
 - 17
+
+
+### Un API Rest con Express
+- 18
+- 19
+- 20
+- 21
+
+
+### NoSQL con MongoDB
+- 22
+- 23
+
+### Extras
+- 24
+- 25
+- 26
+- 27
+
+
 
 
 > Servicio con API que recibe y publica eventos (*almacén en memoria*)
