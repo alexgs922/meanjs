@@ -115,7 +115,10 @@ app.route('/api/priv/movimientos')
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				res.json(result);
+                if(result && Array.isArray(result) && result[0])
+				    res.json(result);
+                else
+                    res.status(204).json([]);
 			}
 		})
 	})
@@ -126,7 +129,7 @@ app.route('/api/priv/movimientos')
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				res.json(movimiento);
+				res.status(201).json(movimiento);
 			}
 		})
 	});
@@ -139,10 +142,14 @@ app.route('/api/priv/movimientos/:id')
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				res.json(result[0]);
+                if(result && Array.isArray(result) && result[0])
+				    res.json(result[0]);
+                else
+                    res.status(404).json(null);
 			}
 		})
-	}).post(function (req, res, next) {
+	})
+    .post(function (req, res, next) {
 		var movId = req.params.id;
 		var nuevoMovimiento = req.body;
 		movimientosData.puttingMovimiento(nuevoMovimiento, function (err, result) {

@@ -13,7 +13,7 @@ module.exports.gettingMovimientos = function (usuario, cb) {
 		} else {
 			db.collection(collection).find({
 				usuario: usuario
-			}).toArray(cb);
+			}).sort({fecha:0, importe:-1}).toArray(cb);
 		}
 	});
 }
