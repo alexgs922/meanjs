@@ -18,16 +18,16 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav navbar-nav">
-					<li ng-class="{ active: menu.isActive('total') }">
+					<li ng-class="{ active: menu.soyElEstadoActivo('total') }">
 						<!-- Los enlaces se formulan como estado, con ui-sref -->
 						<!-- Estos estados generan rutas, según la configuración -->
 						<!-- Pero internamente siempre trabajamos con estados -->
 						<a ui-sref="total">Totales</a>
 					</li>
-					<li ng-class="{ active: menu.isActive('nuevo') }">
+					<li ng-class="{ active: menu.soyElEstadoActivo('nuevo') }">
 						<a ui-sref="nuevo">Nuevo</a>
 					</li>
-					<li ng-class="{ active: menu.isActive('lista') }">
+					<li ng-class="{ active: menu.soyElEstadoActivo('lista') }">
 						<a ui-sref="lista">Lista</a>
 					</li>
 				</ul>
@@ -47,7 +47,7 @@
 	<script src="menuCtrl.js"></script>
 	<script src="cajaCtrl.js"></script>
 	<script src="maestrosService.js"></script>
-	<script src="movimientosFactory.js"></script>
+	<script src="movimientosService.js"></script>
 </body>
 
 </html>

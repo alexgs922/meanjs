@@ -1,7 +1,7 @@
 (function () {
 	angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
 
-	function cajaCtrl(movimientosFactory, maestrosService) {
+	function cajaCtrl(movimientosService, maestrosService) {
 		var vm = this;
 
 		vm.titulo = "Controla tu Cash Flow";
@@ -13,15 +13,15 @@
 			fecha: new Date()
 		};
 
-		vm.movimientos = movimientosFactory.getMovimientos();
-		vm.total = movimientosFactory.getTotal();
+		vm.movimientos = movimientosService.getMovimientos();
+		vm.total = movimientosService.getTotal();
 
 		vm.guardarMovimiento = function () {
 			var auxCopyMov = angular.copy(vm.nuevoMovimiento);
-			movimientosFactory.postMovimiento(auxCopyMov);
+			movimientosService.postMovimiento(auxCopyMov);
 			vm.nuevoMovimiento.importe = 0;
 		}
-		vm.balance = movimientosFactory.balance;
+		vm.balance = movimientosService.balance;
 	}
 
 }());

@@ -3,6 +3,10 @@
 // Que viene en el fichero angular-route.min.js
 angular.module('cashFlow', ['ngRoute']);
 
+
+// Se registra la función como un configurador del módulo
+angular.module('cashFlow').config(configurarRutas);
+
 // Además de controladores, un módulo puede tener funciones de configuración
 // Estas se ejecutarán al arrancar la aplicación
 function configurarRutas($routeProvider) {
@@ -31,6 +35,3 @@ function configurarRutas($routeProvider) {
 			redirectTo: '/'
 		});
 }
-
-// Se registra la función como un configurador del módulo
-angular.module('cashFlow').config(configurarRutas);

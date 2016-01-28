@@ -21,13 +21,13 @@ Cada vista será una 'página' con urls independientes -->
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav navbar-nav">
-					<li ng-class="{ active: menu.isActive('/') }">
+					<li ng-class="{ active: menu.soyLaRutaActiva('/') }">
 						<a href="#/">Totales</a>
 					</li>
-					<li ng-class="{ active: menu.isActive('/nuevo') }">
+					<li ng-class="{ active: menu.soyLaRutaActiva('/nuevo') }">
 						<a href="#/nuevo">Nuevo</a>
 					</li>
-					<li ng-class="{ active: menu.isActive('/lista') }">
+					<li ng-class="{ active: menu.soyLaRutaActiva('/lista') }">
 						<a href="#/lista">Lista</a>
 					</li>
 				</ul>
@@ -36,7 +36,7 @@ Cada vista será una 'página' con urls independientes -->
 	</nav>
 
 	<!-- El contenido principal se cargará dinámicamente -->
-	<!-- De eso se encarga la directiva ng-view en colaboración con el ng-router -->
+	<!-- De eso se encarga la directiva ng-view en complot con el ng-router -->
 	<!-- Sólo puede haber un ng-view por página-->
 	<div class="container text-center" style="padding-top:50px;" ng-view>
 		<!-- Aquí irá el contenido dinámico -->

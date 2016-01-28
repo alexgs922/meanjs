@@ -1,48 +1,49 @@
 // El controlador permanece común a las tres vistas
 // En principio esto facilita la programación
 (function () {
-    var cajaCtrl = function () {
-        var vm = this;
+	angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
 
-        vm.titulo = "Controla tu Cash Flow";
+	function cajaCtrl() {
+		var vm = this;
 
-        vm.total = {
-            ingresos: 0,
-            gastos: 0
-        };
+		vm.titulo = "Controla tu Cash Flow";
 
-        vm.maestros = {
-            categoriasIngresos: ['Nómina', 'Ventas', 'Intereses Depósitos'],
-            categoriasGastos: ['Hipotéca', 'Compras', 'Impuestos']
-        };
+		vm.total = {
+			ingresos: 0,
+			gastos: 0
+		};
 
-        vm.nuevoMovimiento = {
-            esIngreso: 1,
-            esGasto: 0,
-            importe: 0,
-            fecha: new Date()
-        };
+		vm.maestros = {
+			categoriasIngresos: ['Nómina', 'Ventas', 'Intereses Depósitos'],
+			categoriasGastos: ['Hipotéca', 'Compras', 'Impuestos']
+		};
 
-        vm.movimientos = [];
+		vm.nuevoMovimiento = {
+			esIngreso: 1,
+			esGasto: 0,
+			importe: 0,
+			fecha: new Date()
+		};
 
-        vm.guardarMovimiento = function () {
-			if(vm.nuevoMovimiento.esIngreso){
+		vm.movimientos = [];
+
+		vm.guardarMovimiento = function () {
+			if (vm.nuevoMovimiento.esIngreso) {
 				vm.total.ingresos += vm.nuevoMovimiento.importe;
-			}else{
+			} else {
 				vm.total.gastos += vm.nuevoMovimiento.importe;
 			}
-            var auxCopyMov = angular.copy(vm.nuevoMovimiento);
-            auxCopyMov.tipo = vm.tipo(auxCopyMov);
-            vm.movimientos.push(auxCopyMov);
-            vm.nuevoMovimiento.importe = 0;
-        }
-        vm.balance = function () {
-            return vm.total.ingresos - vm.total.gastos
-        }
-        vm.tipo = function (movimiento) {
-            return movimiento.esIngreso && 'Ingreso' || 'Gasto'
-        }
-    }
+			var auxCopyMov = angular.copy(vm.nuevoMovimiento);
+			auxCopyMov.tipo = vm.tipo(auxCopyMov);
+			vm.movimientos.push(auxCopyMov);
+			vm.nuevoMovimiento.importe = 0;
+		}
+		vm.balance = function () {
+			return vm.total.ingresos - vm.total.gastos
+		}
+		vm.tipo = function (movimiento) {
+			return movimiento.esIngreso && 'Ingreso' || 'Gasto'
+		}
+	}
 
-    angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
 }());

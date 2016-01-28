@@ -1,8 +1,11 @@
 (function () {
-	// El controlador ahora tiene una dependencia de la factoría
+
+	angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
+
+	// El controlador ahora tiene dependencias de otros servicios
 	// Las dependencias se buscan en nuestro módulo
 	// o en cualquiera de sus dependencias
-	var cajaCtrl = function (movimientosFactory, maestrosService) {
+	function cajaCtrl(movimientosService, maestrosService) {
 		var vm = this;
 
 		vm.titulo = "Controla tu Cash Flow";
@@ -14,16 +17,16 @@
 			fecha: new Date()
 		};
 		// La parte de datos que debe compartir la delega sobre la factoría
-		vm.movimientos = movimientosFactory.getMovimientos();
-		vm.total = movimientosFactory.getTotal();
+		vm.movimientos = movimientosService.getMovimientos();
+		vm.total = movimientosService.getTotal();
 
 		vm.guardarMovimiento = function () {
 			var auxCopyMov = angular.copy(vm.nuevoMovimiento);
 
-			movimientosFactory.postMovimiento(auxCopyMov);
+			movimientosService.postMovimiento(auxCopyMov);
 			vm.nuevoMovimiento.importe = 0;
 		}
-		vm.balance = movimientosFactory.balance;
+		vm.balance = movimientosService.balance;
 	}
-	angular.module('cashFlow').controller('CajaCtrl', cajaCtrl);
+
 }());

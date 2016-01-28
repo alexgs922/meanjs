@@ -1,6 +1,6 @@
 (function () {
     var menuCtrl = function ($location) {
-        this.isActive = function (ruta) {
+        this.soyLaRutaActiva = function (ruta) {
             return ruta === $location.path();
         }
     }

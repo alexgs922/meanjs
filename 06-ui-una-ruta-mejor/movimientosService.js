@@ -1,8 +1,8 @@
 (function () {
+	angular.module('cashFlow').service('movimientosService', movimientosService);
 
-	angular.module('cashFlow').factory('movimientosFactory', movimientosFactory);
 
-	function movimientosFactory()  {
+	function movimientosService()  {
 
 		var movimientos = [];
 
@@ -11,25 +11,24 @@
 			gastos: 0
 		};
 
-		var result  =   {};
 
-
-		result.getMovimientos =   function ()  {
+		this.getMovimientos =   function ()  {
 			return movimientos;
 		};
 
-		result.getTotal =   function ()  {
+		this.getTotal =   function ()  {
 			return total;
 		};
 
-		result.postMovimiento =   function (movimiento)  {
+		this.postMovimiento =   function (movimiento)  {
 			movimiento.tipo = tipo(movimiento);
 			movimientos.push(movimiento);
+			console.log(movimiento);
 			total.ingresos += movimiento.esIngreso * movimiento.importe;
 			total.gastos += movimiento.esGasto * movimiento.importe;
 		};
 
-		result.balance = function () {
+		this.balance = function () {
 			return total.ingresos - total.gastos
 		}
 
@@ -38,7 +37,6 @@
 		}
 
 
-		return result;
 	};
 
 }());
