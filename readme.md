@@ -9,7 +9,7 @@ https://www.digitalocean.com/?refcode=a837eb86b396
 ## 1. Introducción a AngularJS y NodeJS
 - 00
 
-### Vistas, controladores y factorías
+### Vistas, controladores y servicios
 - 01
 - 02
 - 03
