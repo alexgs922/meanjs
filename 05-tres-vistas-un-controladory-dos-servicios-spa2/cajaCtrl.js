@@ -27,6 +27,12 @@
 			vm.nuevoMovimiento.importe = 0;
 		}
 		vm.balance = movimientosService.balance;
+
+        vm.tipo = function(nm){
+            return movimientosService.getTipo(nm);
+        }
+
+        vm.tipo = movimientosService.getTipo;
 	}
 
 }());

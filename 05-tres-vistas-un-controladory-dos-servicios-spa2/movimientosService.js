@@ -43,7 +43,7 @@
 			return movimiento.esIngreso && 'Ingreso' || 'Gasto'
 		}
 
-
+        this.getTipo= tipo;
 	};
 
 }());
