@@ -2,7 +2,6 @@
 
 <head>
 	<title>Control de Caja</title>
-	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	<meta charset="utf-8" />
 	<meta lang="es" />
 	<meta name="description" content="Ejemplo Control de Caja en AngularJS por Alberto Basalo" />
@@ -11,7 +10,7 @@
 	<meta name="Keywords" content="AngularJS, ejemplo, tutorial, curso" />
 	<link rel="author" href="https://plus.google.com/+AlbertoBasalo71" />
 	<!-- Bootstrap core CSS -->
-    <link href="refs/bootstrap.min.css" rel="stylesheet">
+	<link href="refs/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,13 +18,13 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav navbar-nav">
-					<li ng-class="{ active: menu.isActive('total') }">
+					<li ng-class="{ active: menu.soyElEstadoActivo('total') }">
 						<a ui-sref="total">Totales</a>
 					</li>
-					<li ng-class="{ active: menu.isActive('nuevo') }">
+					<li ng-class="{ active: menu.soyElEstadoActivo('nuevo') }">
 						<a ui-sref="nuevo">Nuevo</a>
 					</li>
-					<li ng-class="{ active: menu.isActive('lista') }">
+					<li ng-class="{ active: menu.soyElEstadoActivo('lista') }">
 						<a ui-sref="lista">Lista</a>
 					</li>
 				</ul>
@@ -37,25 +36,21 @@
 
 	</div>
 
-	<span ng-init="texto='hola-Mundo@angular.js'; movimientos=[{importe:1001}, {importe:999}] "></span>
-	<h1>{{ texto | uppercase | lowercase | abLimpiarCadena | abRecortar:4 }}</h1>
-	<h2>{{movimientos | abGranImporte
-
-	  }}
-
-	  </h2>
-
-
+	<!-- RPeuabs con filtros -->
+	<span ng-init="numero=42; texto='hola-Mundo@angular.js'; movimientos=[{importe:1001}, {importe:999}] "></span>
+	<h3>{{ numero | abLimpiarNumero}}</h3>
+	<h2>{{ texto | uppercase | lowercase | abLimpiarCadena | abRecortar:4 }}</h2>
+	<h3>{{movimientos | abGranImporte}}</h3>
 
 	<!-- JavaScript References -->
-	<script src="refs/angular.min.js"></script>
-	<script src="refs/angular-ui-router.min.js"></script>
+	<script src="./refs/angular.min.js"></script>
+	<script src="./refs/angular-ui-router.min.js"></script>
 	<script src="app.js"></script>
 	<script src="menuCtrl.js"></script>
 	<script src="cajaCtrl.js"></script>
 	<script src="maestrosService.js"></script>
-	<script src="movimientosFactory.js"></script>
-	<!-- Incluir el fichero dónde se han programado los filtros-->
+	<script src="movimientosService.js"></script>
+	<!-- Fichero de filtros. Atención declara su porpio módulo -->
 	<script src="filtros.js"></script>
 </body>
 

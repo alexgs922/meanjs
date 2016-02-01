@@ -1,4 +1,5 @@
 (function () {
+
 	angular.module('cashFlow').service('maestrosService', maestrosService);
 
 	function maestrosService() {
@@ -7,4 +8,5 @@
 			categoriasGastos: ['Hipotéca', 'Compras', 'Impuestos']
 		};
 	}
+
 }());

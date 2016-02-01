@@ -1,5 +1,6 @@
-// tenemos que agregar la dependencia hacia el nuevo módulo de filtros
+// Es necesario incluir la referencia al módulo de filtros
 angular.module('cashFlow', ['ui.router', 'abFiltros']);
+
 
 angular.module('cashFlow').config(function ($stateProvider) {
 	$stateProvider
