@@ -1,38 +1,42 @@
 (function () {
-	angular.module('cashFlow').factory('movimientosFactory', movimientosFactory);
+	angular.module('cashFlow').service('movimientosService', movimientosService);
 
-	function movimientosFactory()  {
+
+	function movimientosService()  {
 
 		var movimientos = [];
+
 		var total = {
 			ingresos: 0,
 			gastos: 0
 		};
-		var result  =   {};
 
-		result.getMovimientos =   function ()  {
+
+		this.getMovimientos =   function ()  {
 			return movimientos;
 		};
 
-		result.getTotal =   function ()  {
+		this.getTotal =   function ()  {
 			return total;
 		};
 
-		result.postMovimiento =   function (movimiento)  {
+		this.postMovimiento =   function (movimiento)  {
+			movimiento.tipo = tipo(movimiento);
 			movimientos.push(movimiento);
+			console.log(movimiento);
 			total.ingresos += movimiento.esIngreso * movimiento.importe;
 			total.gastos += movimiento.esGasto * movimiento.importe;
 		};
 
-		result.balance = function () {
+		this.balance = function () {
 			return total.ingresos - total.gastos
 		}
 
-		result.tipo = function (movimiento) {
+		var tipo = function (movimiento) {
 			return movimiento.esIngreso && 'Ingreso' || 'Gasto'
 		}
 
-		return result;
+
 	};
 
 }());
