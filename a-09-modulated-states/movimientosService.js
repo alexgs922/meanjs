@@ -4,7 +4,13 @@
 
 	function movimientosService()  {
 
-		var movimientos = [];
+		var movimientos = [{
+			importe: 1000
+		}, {
+			importe: 2000
+		}, {
+			importe: 3000
+		}];
 
 		var total = {
 			ingresos: 0,
