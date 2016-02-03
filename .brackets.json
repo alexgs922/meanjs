@@ -1,5 +1,10 @@
 {
     "jscodehints.detectedExclusions": [
-        "/Users/alberto/code/meanjs/a-08-directivas/componentes.js"
+        "/Users/alberto/code/meanjs/a-08-directivas/componentes.js",
+        "/Users/alberto/code/meanjs/a-12-rest-sources/client/app/common/appSecurity.js",
+        "/Users/alberto/code/meanjs/a-09-modulated-states/componentes/menuCtrl.js",
+        "/Users/alberto/code/meanjs/a-09-modulated-states/componentes/componentes.js",
+        "/Users/alberto/code/meanjs/a-11-rest-assured/client/app/common/filtros.js",
+        "/Users/alberto/code/meanjs/a-09-modulated-states/cajaCtrl.js"
     ]
 }
