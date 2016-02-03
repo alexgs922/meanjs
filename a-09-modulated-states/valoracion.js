@@ -1,34 +1,38 @@
 (function () {
 	angular.module('abValoracion', [])
-		.component('abValoracion', {
+		.directive('abValoracion', valoracion);
+
+	function valoracion() {
+		return {
+			restrict: 'AE',
 			templateUrl: './tpl-valoracion.html',
-			bindings: {
+			scope: {
 				valor: '=',
 				max: '@',
 				soloLectura: '@'
 			},
+			bindToController: true,
+			controllerAs: "valoracion",
 			controller: valoracionCtrl
-		});
-
-
+		}
+	}
 
 	function valoracionCtrl() {
 		var vm = this;
-		/** para empezar iniciamos los datos según lo recibido en el scope */
-		actualizarEstrellas();
-
-
 		/** responde al click en una estrella */
 		vm.marcar = function (indice) {
 			if (vm.soloLectura && vm.soloLectura === 'true') {
 				return;
 			}
 			vm.valor = indice + 1;
-			actualizarEstrellas();
+			actualizar();
 		};
 
+		/** para empezar iniciamos los datos según lo recibido en el scope */
+		actualizar();
+
 		/** actualiza los datos para repintar la vista */
-		function actualizarEstrellas() {
+		function actualizar() {
 			if (!vm.valor) vm.valor = 1;
 			vm.estrellas = [];
 			for (var i = 0; i < vm.max; i++) {
