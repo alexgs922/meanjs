@@ -11,6 +11,9 @@
         "/Users/alberto/code/meanjs/m-01-mongo-console/2-buscar.js",
         "/Users/alberto/code/meanjs/a-12-rest-sources/server.js",
         "/Users/alberto/code/meanjs/n-07-api-restfull-con-express/1-rest-crud.js",
-        "/Users/alberto/code/meanjs/m-01-mongo-console/4-insertar.js"
+        "/Users/alberto/code/meanjs/m-01-mongo-console/4-insertar.js",
+        "/Users/alberto/code/meanjs/n-07-api-restfull-con-express/maestros.js",
+        "/Users/alberto/code/meanjs/n-06-rutas-con-express/1-rutas.js",
+        "/Users/alberto/code/meanjs/m-03-mongodb-client/client/app/app.js"
     ]
 }

@@ -9,6 +9,33 @@ var enrutar = function (app, ruta) {
 			respuesta.status(204).send();
 	});
 
+	// La ruta puede ser especifica
+	app.get(ruta + '/totales', function (peticion, respuesta) {
+		console.log('totales');
+		var totales = {
+			ingresos: 0,
+			gastos: 0,
+			balance: 0
+		};
+		if (movimientos && movimientos.length > 0) {
+			movimientos.forEach(function (movimiento) {
+				if (movimiento.esIngreso) {
+					totales.ingresos += movimiento.importe;
+				} else {
+					totales.gastos += movimiento.importe
+				}
+			});
+			totales.balance = totales.ingresos - totales.gastos;
+			respuesta.json(totales);
+		} else {
+			respuesta.status(200).json({
+				ingresos: 0,
+				gastos: 0,
+				balance: 0
+			});
+		}
+	});
+
 	// Por supuesto se pueden usar parámetros
 	app.get(ruta + '/:id', function (peticion, respuesta) {
 		var movimiento = movimientos[peticion.params.id];
@@ -17,6 +44,8 @@ var enrutar = function (app, ruta) {
 		else
 			respuesta.status(404).send();
 	});
+
+	// OJO afecta el orden de declaración
 
 	// Las inserciones se realizan respondiendo al verbo POST
 	app.post(ruta, function (peticion, respuesta) {
@@ -47,6 +76,9 @@ var enrutar = function (app, ruta) {
 			respuesta.status(404).send(0);
 		}
 	});
+
+
+
 
 }
 
