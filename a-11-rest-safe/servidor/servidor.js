@@ -1,7 +1,10 @@
 "use strict";
 var express = require('express');
-// Paquete externo para... parsear el body :-)
 var bodyParser = require('body-parser');
+
+var seguridad = require('./seguridad.js');
+var usuarios = require('./usuarios.js');
+var sesiones = require('./sesiones.js');
 var maestros = require('./maestros.js');
 var movimientos = require('./movimientos.js');
 
@@ -18,11 +21,14 @@ app.use(function (peticion, respuesta, siguiente) {
 	siguiente();
 });
 
-// Hasta ahora hemos visto como responder a peticiones GET devolviendo HTML
 app.use(express.static(__dirname + './../cliente'));
 
-maestros(app, '/maestros');
-movimientos(app, '/movimientos')
+seguridad.usarSeguridad(app, '/api/priv/');
+
+usuarios(app, '/api/pub/usuarios');
+sesiones(app, '/api/pub/sesiones');
+maestros(app, '/api/pub/maestros');
+movimientos(app, '/api/priv/movimientos')
 
 app.listen(3000);
 console.log('listening on port 3000');
