@@ -5,6 +5,12 @@
         "/Users/alberto/code/meanjs/a-09-modulated-states/componentes/menuCtrl.js",
         "/Users/alberto/code/meanjs/a-09-modulated-states/componentes/componentes.js",
         "/Users/alberto/code/meanjs/a-11-rest-assured/client/app/common/filtros.js",
-        "/Users/alberto/code/meanjs/a-09-modulated-states/cajaCtrl.js"
+        "/Users/alberto/code/meanjs/a-09-modulated-states/cajaCtrl.js",
+        "/Users/alberto/code/meanjs/a-11-rest-assured/client/app/components/menuNavegacion/menuCtrl.js",
+        "/Users/alberto/code/meanjs/a-12-rest-sources/client/app/states/registro/registroCtrl.js",
+        "/Users/alberto/code/meanjs/m-01-mongo-console/2-buscar.js",
+        "/Users/alberto/code/meanjs/a-12-rest-sources/server.js",
+        "/Users/alberto/code/meanjs/n-07-api-restfull-con-express/1-rest-crud.js",
+        "/Users/alberto/code/meanjs/m-01-mongo-console/4-insertar.js"
     ]
 }
