@@ -4,7 +4,7 @@
 
 	function maestrosService($http) {
 		// Retornamos una promesa
-		this.gettingCategorias = $http.get('/maestros');
+		this.gettingCategorias = $http.get('/api/pub/maestros');
 	}
 
 }());

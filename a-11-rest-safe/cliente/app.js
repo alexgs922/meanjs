@@ -1,1 +1,1 @@
-angular.module('cashFlow', ['ui.router', 'estados', 'abFiltros', 'abComponentes']);
+angular.module('cashFlow', ['ngCookies', 'ui.router', 'estados', 'abFiltros', 'abComponentes']);

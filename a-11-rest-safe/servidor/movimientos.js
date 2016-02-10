@@ -8,7 +8,7 @@ var enrutar = function (app, ruta) {
 		.get(function (peticion, respuesta) {
 			// filtro para el usuario actual
 			var movimientosUsuario = movimientos.filter(function (m) {
-				return m.usuario == req.usuario;
+				return m.usuario == peticion.usuario;
 			});
 			if (movimientosUsuario && movimientosUsuario.length > 0)
 				respuesta.json(movimientosUsuario);
@@ -18,10 +18,39 @@ var enrutar = function (app, ruta) {
 			var nuevoMovimiento = peticion.body;
 			nuevoMovimiento.id = movimientos.length;
 			// firma del movimiento en el servidor
-			movimiento.usuario = req.usuario;
+			nuevoMovimiento.usuario = peticion.usuario;
 			movimientos.push(nuevoMovimiento)
 			respuesta.status(201).json(nuevoMovimiento);
 		});
+
+	// si la ruta es simple, se puede mantener el verbo original
+	// y simpre teniendo en cuenta la precedencia
+	app.get(ruta + '/totales', function (peticion, respuesta) {
+		var totales = {
+			ingresos: 0,
+			gastos: 0,
+			balance: 0
+		};
+		if (movimientos && movimientos.length > 0) {
+			movimientos.forEach(function (movimiento) {
+				if (movimiento.usuario == peticion.usuario) {
+					if (movimiento.esIngreso) {
+						totales.ingresos += movimiento.importe;
+					} else {
+						totales.gastos += movimiento.importe
+					}
+				}
+			});
+			totales.balance = totales.ingresos - totales.gastos;
+			respuesta.json(totales);
+		} else {
+			respuesta.status(204).json({
+				ingresos: 0,
+				gastos: 0,
+				balance: 0
+			});
+		}
+	});
 
 	// otra a nivel de elemento
 	app.route(ruta + '/:id')
@@ -57,33 +86,7 @@ var enrutar = function (app, ruta) {
 		return movimientosUsuario;
 	}
 
-	// si la ruta es simple, se puede mantener el verbo original
-	app.get(ruta + '/totales', function (peticion, respuesta) {
-		var totales = {
-			ingresos: 0,
-			gastos: 0,
-			balance: 0
-		};
-		if (movimientos && movimientos.length > 0) {
-			movimientos.forEach(function (movimiento) {
-				if (movimiento.usuario == peticion.usuario) {
-					if (movimiento.esIngreso) {
-						totales.ingresos += movimiento.importe;
-					} else {
-						totales.gastos += movimiento.importe
-					}
-				}
-			});
-			totales.balance = totales.ingresos - totales.gastos;
-			respuesta.json(totales);
-		} else {
-			respuesta.status(200).json({
-				ingresos: 0,
-				gastos: 0,
-				balance: 0
-			});
-		}
-	});
+
 }
 
 module.exports = enrutar;
