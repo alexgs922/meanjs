@@ -4,7 +4,7 @@
 	- CRUD : -> http verbs
 ## Recursos y rutas
 	- express router
-	- recuros anidados
+	- recursos anidados
 ## Documentación
 
 ## Organización

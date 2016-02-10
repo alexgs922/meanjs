@@ -23,6 +23,10 @@
         "/Users/alberto/code/meanjs/a-10-rest-in-peace/cliente/servicios/maestrosService.js",
         "/Users/alberto/code/meanjs/a-12-rest-sources/client/app/app.js",
         "/Users/alberto/code/meanjs/a-12-rest-sources/client/app/common/directivas.js",
-        "/Users/alberto/code/meanjs/a-10-rest-in-peace/cliente/estados/total/total.js"
+        "/Users/alberto/code/meanjs/a-10-rest-in-peace/cliente/estados/total/total.js",
+        "/Users/alberto/code/meanjs/a-11-rest-safe/cliente/componentes/componentes.js",
+        "/Users/alberto/code/meanjs/n-08-api-rest-safe/sesiones.js",
+        "/Users/alberto/code/meanjs/a-11-rest-safe/cliente/componentes/valoracion/valoracion.js",
+        "/Users/alberto/code/meanjs/a-11-rest-safe/cliente/config.js"
     ]
 }

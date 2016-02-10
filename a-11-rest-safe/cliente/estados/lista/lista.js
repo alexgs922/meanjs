@@ -13,7 +13,7 @@
 			controller: function (movimientosService) {
 				var vm = this;
 				movimientosService.gettingMovimientos()
-					.then(function (result) {
+					.success(function (result) {
 						vm.movimientos = result;
 					})
 			}

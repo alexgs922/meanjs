@@ -21,7 +21,7 @@
 
 				// llamamos a un metodo de carga asíncrono
 				maestrosService.gettingCategorias
-					.then(function (result) {
+					.success(function (result) {
 						// en un futuro llegarán los datos de forma asíncrona
 						vm.maestros = result;
 					});
@@ -30,10 +30,10 @@
 				vm.guardarMovimiento = function () {
 					var auxCopyMov = angular.copy(vm.nuevoMovimiento);
 					movimientosService.postingMovimiento(auxCopyMov)
-						.then(function (result) {
+						.success(function (result) {
 							// en un futuro confirmarán el guardado
 							vm.nuevoMovimiento.importe = 0;
-						}, function (err) {
+						}).error(function (err) {
 							// avisar al usuario del error
 							console.error(error);
 							vm.nuevoMovimiento.importe = -9999;
