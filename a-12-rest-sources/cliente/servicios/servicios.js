@@ -1,5 +1,5 @@
 (function () {
 
-	angular.module('servicios', [])
+	angular.module('servicios', ['ngResource'])
 
 }());

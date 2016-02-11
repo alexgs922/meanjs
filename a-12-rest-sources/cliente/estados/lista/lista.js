@@ -12,10 +12,13 @@
 			templateUrl: './estados/lista/lista.html',
 			controller: function (movimientosService) {
 				var vm = this;
+				/*
 				movimientosService.gettingMovimientos()
 					.success(function (result) {
 						vm.movimientos = result;
 					})
+				*/
+				vm.movimientos = movimientosService.movimientos.query();
 			}
 		})
 

@@ -2,10 +2,9 @@
 	angular.module('servicios').service('movimientosService', movimientosService);
 
 
-	function movimientosService($http)  {
+	function movimientosService($resource)  {
 
-		// la nomenclatura en gerundio ayuda a dar sensación de trabajo en curso
-
+		/*
 		this.gettingMovimientos =   function ()  {
 			return $http.get('/api/priv/movimientos');
 		};
@@ -22,7 +21,11 @@
 		var tipo = function (movimiento) {
 			return movimiento.esIngreso && 'Ingreso' || 'Gasto'
 		}
+		*/
 
+		// Estamos devolviendo recursos, que internamente usan promesas
+		this.movimientos =  $resource("/api/priv/movimientos/");
+		this.total =  $resource("/api/priv/movimientos/totales/");
 
 	};
 
