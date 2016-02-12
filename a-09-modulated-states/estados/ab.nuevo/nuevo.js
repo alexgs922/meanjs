@@ -5,14 +5,14 @@
 			$stateProvider
 				.state('nuevo', {
 					url: '/nuevo',
-					template: '<ab-nuevo></ab-nuevo>'
+					template: '<abNuevo></ab-nuevo>'
 				})
 		})
 		.component('abNuevo', {
 			templateUrl: './estados/nuevo/nuevo.html',
-			controller: function (movimientosService, maestrosService) {
+			controller: function (movimientosService, maestros_service) {
 				var vm = this;
-				vm.maestros = maestrosService.categorias;
+				vm.maestros = maestros_service.categorias;
 				vm.nuevoMovimiento = {
 					esIngreso: 1,
 					esGasto: 0,

@@ -10,8 +10,10 @@
 			esIngreso: 1,
 			esGasto: 0,
 			importe: 0,
-			fecha: new Date()
+			fecha: new Date(),
+            texto:''
 		};
+
 
 		vm.movimientos = movimientosService.getMovimientos();
 		vm.total = movimientosService.getTotal();

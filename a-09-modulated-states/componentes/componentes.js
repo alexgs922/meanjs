@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('abComponentes', ['abValoracion', 'abMenu'])
+	angular.module('abComponentes', ['abValoracion', 'abMenu', 'abTransclusiones'])
 		.component('abContenido', {
 			template: '<div class="container text-center" style="padding-top:60px;" ui-view></div>'
 		})

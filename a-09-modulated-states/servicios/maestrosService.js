@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('servicios').service('maestrosService', maestrosService);
+	angular.module('servicios').service('maestros_service', maestrosService);
 
 	function maestrosService() {
 		this.categorias = {

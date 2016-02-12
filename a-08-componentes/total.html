@@ -3,8 +3,8 @@
 		<mensaje>Comprueba de dónde viene y a dónde va tu dinero.</mensaje>
 	</ab-cabecera>
 	<div class="row-fluid">
-		<div class="row placeholders">
-			<ab-contador valor="caja.total.ingresos" texto="Total ingresos"></ab-contador>
+		<div class="row placeholders" ng-init="textoIngresos='Total ingresos'">
+			<ab-contador valor="caja.total.ingresos" texto="{{textoIngresos}}"></ab-contador>
 			<ab-contador valor="caja.total.gastos" texto="Total gastos"></ab-contador>
 			<ab-contador valor="caja.total.ingresos - caja.total.gastos" texto="Balance"></ab-contador>
 		</div>

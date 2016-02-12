@@ -2,7 +2,7 @@
 	angular.module('abMenu', ['ui.router'])
 		.controller('MenuCtrl', menuCtrl)
 		.component('abMenuNavegacion', {
-			templateUrl: './componentes/menu/tpl-menu-navegacion.html',
+			templateUrl: './menu/tpl-menu-navegacion.html',
 			controller: 'MenuCtrl'
 		})
 

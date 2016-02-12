@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('abComponentes')
+	angular.module('abTransclusiones',[])
 		.directive('abFirma', firma)
 		.directive('abCabecera', cabecera)
 

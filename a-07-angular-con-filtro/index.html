@@ -35,9 +35,9 @@
 	<div class="container text-center" style="padding-top:50px;" ui-view>
 
 	</div>
-
+hola
 	<!-- Pruebas con filtros -->
-	<span ng-init="numero=42; texto='hola-Mundo@angular.js'; movimientos=[{importe:1001}, {importe:999}] "></span>
+	<span ng-init="numero=10; texto='hola-Mundo@angular.js'; movimientos=[{importe:1001}, {importe:999},{importe:1800}] "></span>
 	<h3>{{ numero | abLimpiarNumero}}</h3>
 	<h2>{{ texto | uppercase | lowercase | abLimpiarCadena | abRecortar:4 }}</h2>
 	<h3>{{movimientos | abGranImporte}}</h3>

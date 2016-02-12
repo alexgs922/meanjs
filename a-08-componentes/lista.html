@@ -23,9 +23,10 @@
 		</thead>
 		<tbody>
 			<!-- Por alguna razón no encaja el uso de un componente con un tr -->
-			<!--			<tr ng-repeat="movimiento in caja.movimientos">-->
-			<!--				<ab-fila-movimiento movimiento="movimiento"></ab-fila-movimiento>-->
-			<!--			</tr>-->
+			<tr ng-repeat="movimiento in caja.movimientos">
+			<span><ab-fila-movimiento movimiento="movimiento"></ab-fila-movimiento></span>
+
+			</tr>
 			<tr ng-repeat="movimiento in caja.movimientos" ab-fila-movimiento2 movimiento="movimiento">
 				<!-- El componente abFilaMovimiento recibe un parámetro vía atributos
 				los nombres de las variables pueden ser distintos a nivel de cliente, directiva y plantilla-->
