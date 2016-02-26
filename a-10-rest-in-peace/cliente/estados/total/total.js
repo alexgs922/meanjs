@@ -14,7 +14,7 @@
 				var vm = this;
 				movimientosService.gettingTotal()
 					.then(function (result) {
-						vm.total = result;
+						vm.total = result.data;
 					})
 			}
 		})

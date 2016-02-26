@@ -19,17 +19,18 @@
 					fecha: new Date()
 				};
 
+                //vm.maestros = maestros_service.categorias;
+                
 				// llamamos a un metodo de carga asíncrono
 				maestrosService.gettingCategorias
 					.then(function (result) {
 						// en un futuro llegarán los datos de forma asíncrona
-						vm.maestros = result;
+						vm.maestros = result.data;
 					});
 
 				// la función que invoca el usuario es también asíncrona
 				vm.guardarMovimiento = function () {
-					var auxCopyMov = angular.copy(vm.nuevoMovimiento);
-					movimientosService.postingMovimiento(auxCopyMov)
+					movimientosService.postingMovimiento(vm.nuevoMovimiento)
 						.then(function (result) {
 							// en un futuro confirmarán el guardado
 							vm.nuevoMovimiento.importe = 0;

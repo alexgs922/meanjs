@@ -11,16 +11,16 @@ angular.module('cashFlow').run(function ($http, $cookies) {
 	$http.defaults.headers["appId"] = 'CashFlow';
 });
 
-angular.module('cashFlow').config(configuradorInterceptores);
+angular.module('cashFlow').config(['$httpProvider',configuradorInterceptores]);
 
 // Los interceptores de http se configuran con funciones asignadas en el 'config'
 // Las configuraciones afectan a servicios, como el $http
 // Cada servicio configurable ofrece un 'provider' al que 'configurar'
 // En este caso es el $httpProvider
-function configuradorInterceptores($httpProvider) {
+function configuradorInterceptores(unProveedor) {
 	// La configuración admite multiples funciones interceptoras
 	// usaremos una función para controlar la seguridad
-	$httpProvider.interceptors.push(funcionInterceptoraSeguridad);
+	unProveedor.interceptors.push(funcionInterceptoraSeguridad);
 }
 
 // Esta funión será usada en todas las llamadas http

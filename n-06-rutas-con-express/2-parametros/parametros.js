@@ -49,8 +49,8 @@ app.param('numero1', function (peticion, respuesta, siguiente, valor) {
         console.log('numero1 no es un número ');
         // podemos disitnas acciones correctoras o preventivas
         peticion.params.numero1 = 0;
-        //siguiente(new Error('numero1 no es un número'));
-        //respuesta.status(400).send('numero1 no es un número');
+        siguiente(new Error('numero1 no es un número'));
+        respuesta.status(400).send('numero1 no es un número');
     }
     siguiente();
 });

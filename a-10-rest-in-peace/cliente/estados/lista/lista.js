@@ -14,9 +14,10 @@
 				var vm = this;
 				movimientosService.gettingMovimientos()
 					.then(function (result) {
-						vm.movimientos = result;
+						vm.movimientos = result.data;
 					})
 			}
 		})
 
 }());
+

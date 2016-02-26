@@ -1,5 +1,5 @@
 (function () {
-	angular.module('registro', ['ui.router'])
+	angular.module('registro', ['ui.router','ngCookies'])
 		.config(function ($stateProvider) {
 			$stateProvider
 				.state('registro', {
@@ -36,7 +36,8 @@
 				.then(function (respuesta) {
 					$rootScope.usuario = vm.usuario.email;
 					$rootScope.mensaje = 'recién entrado';
-					$cookies.put("sessionId", respuesta.data);
+					
+                .put("sessionId", respuesta.data);
 					$state.go("total");
 				}, function (respuesta) {
 					$rootScope.mensaje = respuesta.data;

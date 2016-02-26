@@ -67,16 +67,22 @@ var enrutar = function (app, ruta) {
 
 	// Las eliminaciones se realizan respondiendo al verbo DELETE
 	app.delete(ruta + '/:id', function (peticion, respuesta) {
-		var movimiento = movimientos[peticion.params.id];
-		if (movimiento) {
-			movimientos.splice(peticion.params.id, 1)
-			respuesta.status(204).send(1);
-		} else {
-			respuesta.status(404).send(0);
-		}
+		var r= delete_movimientos(peticion.params.id);
+        respuesta.status(r.status).send(r.body);
 	});
 
-
+    function delete_movimientos(id){
+        var movimiento = movimientos[id];
+		var respuesta = {status:0, body:null}
+        if (movimiento) {
+			movimientos.splice(id, 1)
+			respuesta.status= 204;
+            respuesta.body=1;
+		} else {
+			respuesta.status= 404;
+            respuesta.body=0;
+		}
+    }
 
 
 }
