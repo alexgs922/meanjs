@@ -1,94 +1,59 @@
 "use strict";
-var movimientos = [];
-var enrutar = function (app, ruta) {
-	// Tendremos dos mega-rutas por recurso
+var movimientosData = require('./data/movimientosData.js');
+var usuariosData = require('./data/usuariosData.js');
 
-	// una para ir a la colección
-	app.route(ruta)
-		.get(function (peticion, respuesta) {
-			// filtro para el usuario actual
-			var movimientosUsuario = movimientos.filter(function (m) {
-				return m.usuario == peticion.usuario;
-			});
-			if (movimientosUsuario && movimientosUsuario.length > 0)
-				respuesta.json(movimientosUsuario);
-			else
-				respuesta.status(204).send();
-		})
+var enrutar = function (app, ruta) {
+    app.route(ruta)
+        .get(function (peticion, respuesta) {
+            movimientosData.findingByUsuario(peticion.usuario)
+                .then(function (movimientosUsuario) {
+                    if (movimientosUsuario && movimientosUsuario.length > 0)
+                        respuesta.json(movimientosUsuario);
+                    else
+                        respuesta.status(204).send();
+                })
+                .fail(function (err) {
+                    respuesta.status(500).send(err);
+                });
+        })
         .post(function (peticion, respuesta) {
-			var nuevoMovimiento = peticion.body;
-			nuevoMovimiento.id = movimientos.length;
-			// firma del movimiento en el servidor
-			nuevoMovimiento.usuario = peticion.usuario;
-			movimientos.push(nuevoMovimiento)
-			respuesta.status(201).json(nuevoMovimiento);
-		});
+            var movimiento = peticion.body;
+			movimiento.usuario = peticion.usuario;
+			movimientosData.inserting(movimiento)
+				.then(function (data) {
+					respuesta.status(201).json(movimiento);
+				})
+				.fail(function (err) {
+					respuesta.status(500).send(err);
+				});
+        });
 
     // si la ruta es simple, se puede mantener el verbo original
     // Manteniendo la Precedencia
-	app.get(ruta + '/totales', function (peticion, respuesta) {
-		var totales = {
-			ingresos: 0,
-			gastos: 0,
-			balance: 0
-		};
-		if (movimientos && movimientos.length > 0) {
-			movimientos.forEach(function (movimiento) {
-				if (movimiento.usuario == peticion.usuario) {
-					if (movimiento.esIngreso) {
-						totales.ingresos += movimiento.importe;
-					} else {
-						totales.gastos += movimiento.importe
-					}
-				}
+    app.get(ruta + '/totales', function (peticion, respuesta) {
+        var totales = {
+            ingresos: 0,
+            gastos: 0,
+            balance: 0
+        };
+        // To Do:
+        
+    });
+
+    // otra a nivel de elemento
+    app.route(ruta + '/:id')
+        .get(function (peticion, respuesta) {
+           movimientosData.findingByIdUsuario(peticion.params.id, peticion.usuario)
+			.then(function (data) {
+				if(data && data[0])
+                   respuesta.json(data[0]);
+                else
+                   respuesta.status(404).send(0); 
+			})
+			.fail(function (err) {
+				respuesta.status(500).send(err);
 			});
-			totales.balance = totales.ingresos - totales.gastos;
-			respuesta.json(totales);
-		} else {
-			respuesta.status(200).json({
-				ingresos: 0,
-				gastos: 0,
-				balance: 0
-			});
-		}
-	});
-
-	// otra a nivel de elemento
-	app.route(ruta + '/:id')
-		.get(function (peticion, respuesta) {
-			var movimientosUsuario = getMovimientoUsuario(peticion.params.id, peticion.usuario);
-			if (movimientosUsuario && movimientosUsuario.length > 0)
-				respuesta.json(movimientosUsuario[0]);
-			else
-				respuesta.status(404).send();
-		})
-        .put(function (peticion, respuesta) {
-			var movimientosUsuario = getMovimientoUsuario(peticion.params.id, peticion.usuario);
-			if (movimientosUsuario && movimientosUsuario.length > 0) {
-				movimientosUsuario[0] = peticion.body;
-				respuesta.json(1);
-			} else {
-				respuesta.status(404).send(0);
-			}
-		})
-        .delete(function (peticion, respuesta) {
-			var movimientosUsuario = getMovimientoUsuario(peticion.params.id, peticion.usuario);
-			if (movimientosUsuario && movimientosUsuario.length > 0) {
-				movimientos.splice(peticion.params.id, 1)
-				respuesta.status(204).send(1);
-			} else {
-				respuesta.status(404).send(0);
-			}
-		})
-
-
-	function getMovimientoUsuario(id, usuario) {
-		var movimientosUsuario = movimientos.filter(function (m) {
-			return (m.usuario == usuario && m.id == id)
-		})
-		return movimientosUsuario;
-	}
-
+        })
 
 }
 
